@@ -6,12 +6,6 @@ $DB_user = "***";
 $DB_pwd = "***";
 $DB_db = "***";
 
-
-/*
----------------------------------------------------------------------------
-Functions
-*/
-
 function loggedInCheck() {
     if (!$_SESSION['loggedIn']) {
         die("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
@@ -289,20 +283,10 @@ function getAccountTable($pending = false) {
 
 
 
-/*
-----------------------------------------------------------------
-POST REQUESTS
-*/
-
 if (isset($_POST["func"])) {
     $func = $_POST["func"];
     switch($func) {
 
-    /*
-    --------------------------------------------------------------
-    Login/Logout
-    --------------------------------------------------------------
-    */
         case "login":
 
             $conn = new mysqli($DB_server, $DB_user, $DB_pwd, $DB_db);
@@ -348,12 +332,6 @@ if (isset($_POST["func"])) {
             echo "success";
             break;
 
-    /*
-    --------------------------------------------------------------
-    Register indefinetly
-    --------------------------------------------------------------
-    */
-
         case "register":
 
             if ( empty($_POST['userID']) || empty($_POST['registerKey']) || empty($_POST['newPassword'])) {
@@ -392,11 +370,7 @@ if (isset($_POST["func"])) {
 
             break;
 
-    /*
-    --------------------------------------------------------------
-    Search for single items
-    --------------------------------------------------------------
-    */
+
         case "reloadAllTables":
             loggedInCheck();
             $filterType = (isset($_POST['filterType'])) ? $_POST['filterType'] : "";
